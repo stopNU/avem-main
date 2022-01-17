@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-//import PrismicScript from "../components/PrismicScript";
+import PrismicScript from "../components/PrismicScript";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -48,7 +48,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          {/*<PrismicScript /> */}
+          <PrismicScript />
         </body>
       </Html>
     );
