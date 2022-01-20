@@ -9,11 +9,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Mulish', fantasy;
+    font-family: 'Mulish', sans-serif;
     background-color: #F8F8F8;
   }
 
   a{
+    color: inherit;
     text-decoration: none;
   }
 

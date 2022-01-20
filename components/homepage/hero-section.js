@@ -6,13 +6,25 @@ import Image from "next/image";
 const Section = styled.section`
   padding-top: ${({ theme }) => theme.sections.large};
   padding-bottom: ${({ theme }) => theme.sections.default};
+  background: radial-gradient(
+      ellipse at 125% 105%,
+      #ffaca7 0%,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at -30% 105%,
+      #7f38ca 0%,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 32%
+    );
 `;
 
 const Headline = styled.div`
   text-align: center;
   max-width: 620px;
   margin: 0 auto 24px;
-  p{
+  p {
     margin-top: 24px;
   }
 `;
@@ -52,7 +64,7 @@ const HeroSection = (props) => {
       <ContentWrapper>
         <Headline>
           <RichText render={title} />
-          <RichText className="subtitle" render={subtitle} />
+          <RichText render={subtitle} />
         </Headline>
         <Image
           src={image.url}
