@@ -24,6 +24,10 @@ export const Client = (req = null) => (
   Prismic.client(apiEndpoint, createClientOptions(req, accessToken, Router))
 );
 
+/*export const Client = (req = null, options = {}) => (
+  Prismic.client(apiEndpoint, Object.assign({ routes: Router.routes }, options))
+);*/
+
 // Options to be passed to the Client
 const createClientOptions = (req = null, prismicAccessToken = null, routes = null) => {
   const reqOption = req ? { req } : {}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { device } from "../../utils/breakpoints";
 import { useState, useEffect } from "react";
 //import Logo from "./logo";
 
@@ -16,20 +17,22 @@ const Header = styled.header`
 `;
 
 const NavBar = styled.nav`
-  display: flex;
-  max-width: ${({ theme }) => theme.breakpoints.tabletxl};
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-  ul {
+  display: none;
+  @media ${device.tablet} {
     display: flex;
-    column-gap: 20px;
-    list-style: none;
-    li {
-      a {
-        color: ${({ theme }) => theme.colors.headings};
-        
+    max-width: ${({ theme }) => theme.breakpoints.tabletxl};
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    ul {
+      display: flex;
+      column-gap: 20px;
+      list-style: none;
+      li {
+        a {
+          color: ${({ theme }) => theme.colors.headings};
+        }
       }
     }
   }
@@ -58,7 +61,7 @@ const MainNavigation = () => {
           <a>Logo</a>
         </Link>
         <ul>
-        <li>
+          <li>
             <Link href="/">Home</Link>
           </li>
           <li>

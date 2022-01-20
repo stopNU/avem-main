@@ -29,13 +29,35 @@ export const hrefResolver = (doc) => {
   return '/'
 }
 
+
+export const Router = {
+  routes: [
+    /*{
+      type: 'page',
+      path: '/:uid',
+    },
+    {
+      type: 'homepage',
+      path: '/',
+    }*/
+  ]
+};
+
 /*
 export const Router = {
   routes: [
     {
-      "type":"page",
-      "path":"/:uid"
+      type: "page",
+      path: "/:uid",
     },
-  ]
+    {
+      type: "home-page",
+      path: "/",
+    },
+  ],
+  href: (type) => {
+    const route = Router.routes.find((r) => r.type === type);
+    return route && route.href;
+  },
 };
 */

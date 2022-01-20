@@ -5,17 +5,56 @@ import theme from "../theme";
 import Layout from "../layouts/index";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap');
-
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Mulish', fantasy;
+    background-color: #F8F8F8;
   }
 
   a{
     text-decoration: none;
+  }
+
+  h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    color: ${({ theme }) => theme.colors.headings};
+  }
+  p{
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+  }
+
+  h1{
+    font-size: ${({ theme }) => theme.fontSizes.h1};
+    font-weight: 900;
+    line-height: 54px;
+  }
+  h2{
+    font-size: ${({ theme }) => theme.fontSizes.h2};
+    font-weight: 800;
+  }
+  h3{
+    font-size: ${({ theme }) => theme.fontSizes.h3};
+    font-weight: 800;
+  }
+  h4{
+    font-size: ${({ theme }) => theme.fontSizes.h4};
+    font-weight: 800;
+  }
+  h5{
+    font-size: ${({ theme }) => theme.fontSizes.h5};
+    font-weight: 800;
+  }
+  h6{
+    font-size: ${({ theme }) => theme.fontSizes.h6};
+    font-weight: 800;
+    margin: 6px 0;
+  }
+  p{
+    font-size: ${({ theme }) => theme.fontSizes.text};
+    line-height: 24px;
   }
 `;
 

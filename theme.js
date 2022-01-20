@@ -1,22 +1,28 @@
+import { size } from "./utils/breakpoints";
+
 const theme = {
   colors: {
-    primary: "#06B49A",
+    primary: "#7F38CA",
     headings: "#423349",
     paragraphs: "#393939",
   },
   fonts: ["Mulish", "sans-serif", "Roboto"],
   fontSizes: {
-    small: "1em",
-    medium: "2em",
-    large: "3em",
+    h1: "3rem",
+    h2: "2.5rem",
+    h3: "2rem",
+    h4: "1.75rem",
+    h5: "1.5rem",
+    h6: "1.25rem",
+    text: "1.125rem",
+  },
+  sections: {
+    small: "60px",
+    default: "90px",
+    large: "180px",
   },
   breakpoints: {
-    xsmall: "500px",
-    mobile: "767px",
-    tablet: "992px",
-    tabletxl: "1200px",
-    desktop: "1440px",
-    desktopxl: "1680px",
+    ...size,
   },
 };
 
