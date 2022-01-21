@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import Button from "../ui/button";
+import Image from "next/image";
 
 import { RichText } from "prismic-reactjs";
 
@@ -31,8 +32,21 @@ const Buttons = styled.div`
   margin: 40px auto;
 `;
 
+const Logos = styled.div`
+  display: flex;
+  column-gap: 25px;
+  justify-content: center;
+  padding-top: 35px;
+  .logo-group {
+    padding: 16px 24px;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 0.5px 4px rgba(87, 33, 143, 0.25);
+    border-radius: 8px;
+  }
+`;
+
 const IntroSection = (props) => {
-  const { title, subtitle, primary_btn, secondary_btn } = props;
+  const { title, subtitle, primary_btn, secondary_btn, logos } = props;
 
   return (
     <Section>
@@ -49,6 +63,18 @@ const IntroSection = (props) => {
             {secondary_btn.label}
           </Button>
         </Buttons>
+        <Logos>
+          {logos.map((logo, index) => (
+            <div className="logo-group" key={index}>
+              <Image
+                src={logo.logo.url}
+                alt={logo.alt}
+                width={logo.logo.dimensions.width}
+                height={logo.logo.dimensions.height}
+              />
+            </div>
+          ))}
+        </Logos>
       </ContentWrapper>
     </Section>
   );

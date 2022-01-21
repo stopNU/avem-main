@@ -24,6 +24,9 @@ const Headline = styled.div`
   text-align: center;
   max-width: 620px;
   margin: 0 auto 24px;
+  h1{
+    color: ${({ theme }) => theme.colors.headings};
+  }
   p {
     margin-top: 24px;
   }

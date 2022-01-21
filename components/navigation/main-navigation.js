@@ -31,14 +31,14 @@ const NavBar = styled.nav`
       list-style: none;
       li {
         a {
-          color: ${({ theme }) => theme.colors.headings};
+          color: ${({ theme, dark }) => dark ? theme.colors.headings : '#FFF'};
         }
       }
     }
   }
 `;
 
-const MainNavigation = () => {
+const MainNavigation = (props) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = (e) => {
@@ -56,7 +56,7 @@ const MainNavigation = () => {
 
   return (
     <Header isScrolled={isScrolled}>
-      <NavBar>
+      <NavBar dark={props.dark}>
         <Link href="/">
           <a>Logo</a>
         </Link>

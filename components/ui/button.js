@@ -41,7 +41,6 @@ const SecondaryButton = styled(Btn)`
 `;
 
 const Button = ({ children, link, primary, secondary }) => {
-  console.log("button", link);
   // If the link is an internal link, then return a NextLink
   if (link) {
     if (link.link_type && link.link_type === "Document") {
@@ -55,7 +54,7 @@ const Button = ({ children, link, primary, secondary }) => {
 
     // Otherwise return a normal anchor element
     return (
-      <div>
+      <>
         {primary && (
           <PrimaryButton href={Link.url(link)} target={link.target}>
             {children}
@@ -67,7 +66,7 @@ const Button = ({ children, link, primary, secondary }) => {
             {children}
           </SecondaryButton>
         )}
-      </div>
+      </>
     );
   }
 

@@ -9,10 +9,10 @@ const theme = {
   fonts: ["Mulish", "sans-serif", "Roboto"],
   fontSizes: {
     h1: "3rem",
-    h2: "2.5rem",
-    h3: "2rem",
-    h4: "1.75rem",
-    h5: "1.5rem",
+    h2: "2.5rem", //40px
+    h3: "2rem", //32px
+    h4: "1.75rem", //28px
+    h5: "1.5rem", //24px
     h6: "1.25rem",
     text: "1.125rem",
   },

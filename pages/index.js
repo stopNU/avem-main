@@ -1,18 +1,20 @@
 import Head from "next/head";
 import Image from "next/image";
+import Layout from "../layouts/homepage";
 
 import { Client } from "../utils/prismicHelpers";
 //import { linkResolver } from "../../prismic-configuration";
 
 import HeroSection from "../components/homepage/hero-section";
 import IntroSection from "../components/homepage/intro-section";
+import EcosystemSection from "../components/homepage/ecosystem-section";
 
 export default function Home(props) {
   const { data } = props.doc;
   console.log("props", props);
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Avem</title>
         <meta name="description" content="Avem" />
@@ -25,22 +27,21 @@ export default function Home(props) {
         features={data.features}
       />
 
-      <IntroSection 
+      <IntroSection
         title={data.intro_title}
         subtitle={data.intro_subtitle}
         primary_btn={{
           label: data.button_label_primary,
-          link: data.button_link_primary
+          link: data.button_link_primary,
         }}
         secondary_btn={{
           label: data.button_label_secondary,
-          link: data.button_link_secondary
+          link: data.button_link_secondary,
         }}
+        logos={data.intro_logos}
       />
 
-      <section>
-        <span>Section</span>
-      </section>
+      <EcosystemSection title={data.eco_title} products={data.eco_products} />
 
       <footer>
         <a
@@ -54,7 +55,7 @@ export default function Home(props) {
           </span>
         </a>
       </footer>
-    </>
+    </Layout>
   );
 }
 

@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Mulish', sans-serif;
     background-color: #F8F8F8;
+    color: #393939;
   }
 
   a{
@@ -20,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
 
   h1,h2,h3,h4,h5,h6{
     margin: 0;
-    color: ${({ theme }) => theme.colors.headings};
   }
   p{
     margin: 0;
@@ -69,9 +69,8 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 }
