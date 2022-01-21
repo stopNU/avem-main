@@ -5,6 +5,7 @@ const theme = {
     primary: "#7F38CA",
     headings: "#423349",
     paragraphs: "#393939",
+    background: "#F8F8F8"
   },
   fonts: ["Mulish", "sans-serif", "Roboto"],
   fontSizes: {

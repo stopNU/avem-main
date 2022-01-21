@@ -56,8 +56,8 @@ const EcosystemSection = (props) => {
           <RichText render={title} />
         </Headline>
         <Products>
-          {products.map((product) => (
-            <Product key={product.title}>
+          {products.map((product, index) => (
+            <Product key={index}>
               <div>
                 <div className="image">
                   <Image

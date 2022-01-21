@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../layouts";
-import { Client } from "../utils/prismicHelpers";
+import { Client, getLayoutData } from "../utils/prismicHelpers";
 
 import HeroSimple from "../components/shared/hero-simple";
 
@@ -9,7 +9,7 @@ export default function About(props) {
   console.log("props about", props);
 
   return (
-    <Layout>
+    <Layout data={props.layoutData}>
       <Head>
         <title>About</title>
         <meta name="description" content="About" />
@@ -28,10 +28,12 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
   const client = Client();
 
   const doc = (await client.getSingle("aboutpage", ref ? { ref } : null)) || {};
+  const layoutData = await getLayoutData(client, ref);
 
   return {
     props: {
       doc,
+      layoutData,
       preview,
     },
   };

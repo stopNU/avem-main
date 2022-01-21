@@ -1,22 +1,21 @@
 import Head from "next/head";
 import Layout from "../layouts";
-import { Client } from "../utils/prismicHelpers";
+import { Client, getLayoutData } from "../utils/prismicHelpers";
 import HeroSimple from "../components/shared/hero-simple";
 
 export default function Contact(props) {
   const { data } = props.doc;
-  console.log("props contact", props);
+  console.log("props eco", props);
 
   return (
-    <Layout>
+    <Layout data={props.layoutData}>
       <Head>
         <title>Contact</title>
         <meta name="description" content="Contact meta" />
       </Head>
 
-      <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
+      <HeroSimple title={data.hero_title} />
 
-      <footer>Footer</footer>
     </Layout>
   );
 }
@@ -26,11 +25,13 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 
   const client = Client();
 
-  const doc = (await client.getSingle("contact_page", ref ? { ref } : null)) || {};
+  const doc = (await client.getSingle("ecosystem_page", ref ? { ref } : null)) || {};
+  const layoutData = await getLayoutData(client, ref);
 
   return {
     props: {
       doc,
+      layoutData,
       preview,
     },
   };

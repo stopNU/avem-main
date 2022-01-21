@@ -10,13 +10,17 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Mulish', sans-serif;
-    background-color: #F8F8F8;
+    background-color: ${({ theme }) => theme.colors.background};
     color: #393939;
   }
 
   a{
     color: inherit;
     text-decoration: none;
+  }
+
+  ul{
+    padding: 0;
   }
 
   h1,h2,h3,h4,h5,h6{
