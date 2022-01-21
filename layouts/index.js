@@ -19,7 +19,13 @@ const Layout = ({ dark, children, data }) => {
         button={highlightedBtn}
       />
       <main>{children}</main>
-      <Footer logo={data.color_logo} />
+      <Footer
+        logo={data.color_logo}
+        navItems={navItems}
+        copyright={data.copyright_text}
+        privacyPolicy={data.privacy_policy_link}
+        terms={data.terms_link}
+      />
     </>
   );
 };

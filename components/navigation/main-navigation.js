@@ -4,7 +4,6 @@ import { device } from "../../utils/breakpoints";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import NavLink from "./nav-link";
-import Button from "../ui/button";
 
 const Header = styled.header`
   height: 72px;

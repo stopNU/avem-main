@@ -30,6 +30,12 @@ export const linkResolver = (doc) => {
   if (doc.type === 'contact_page') {
     return '/contact'
   }
+  if (doc.type === 'privacy_policy_page') {
+    return '/privacy-policy'
+  }
+  if (doc.type === 'terms_conditions_page') {
+    return '/terms'
+  }
   /*if (doc.type === 'page') {
     return `/page/${doc.uid}`
   }*/
