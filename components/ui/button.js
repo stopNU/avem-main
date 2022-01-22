@@ -6,6 +6,7 @@ import { linkResolver } from "../../prismic-configuration";
 //import { device } from "../../utils/breakpoints";
 
 const Btn = styled.a`
+display: inline-block;
   font-weight: 700;
   cursor: pointer;
 `;
@@ -40,14 +41,18 @@ const SecondaryButton = styled(Btn)`
   text-decoration: underline;
 `;
 
-const Button = ({ children, link, primary, secondary }) => {
-  // If the link is an internal link, then return a NextLink
+const Button = ({ children, link, primary, secondary, className }) => {
+  const isPrimaryBtn = primary ? true : false;
+
   if (link) {
     if (link.link_type && link.link_type === "Document") {
       return (
         <NextLink href={linkResolver(link)}>
-          {primary && <PrimaryButton>{children}</PrimaryButton>}
-          {secondary && <SecondaryButton>{children}</SecondaryButton>}
+          {isPrimaryBtn ? (
+            <PrimaryButton className={className}>{children}</PrimaryButton>
+          ) : (
+            <SecondaryButton className={className}>{children}</SecondaryButton>
+          )}
         </NextLink>
       );
     }

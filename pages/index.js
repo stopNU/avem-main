@@ -2,11 +2,13 @@ import Head from "next/head";
 import Layout from "../layouts";
 
 import { Client, getLayoutData } from "../utils/prismicHelpers";
+import SliceZone from "../slices/SliceZone";
 //import { linkResolver } from "../../prismic-configuration";
 
 import HeroSection from "../components/homepage/hero-section";
 import IntroSection from "../components/homepage/intro-section";
 import EcosystemSection from "../components/homepage/ecosystem-section";
+import PartnerSection from "../components/homepage/partner-section";
 
 export default function Home(props) {
   const { data } = props.doc;
@@ -41,6 +43,16 @@ export default function Home(props) {
       />
 
       <EcosystemSection title={data.eco_title} products={data.eco_products} />
+
+      <PartnerSection
+        title={data.highlights_title}
+        product_hightlights={data.highlights}
+        partners={data.partners}
+        investors={data.investors}
+      />
+
+      {data.body && <SliceZone sliceZone={data.body} />}
+
     </Layout>
   );
 }

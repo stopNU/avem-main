@@ -13,7 +13,6 @@ const Section = styled.section`
 
 export default function Contact(props) {
   const { data } = props.doc;
-  console.log("props contact", props);
 
   return (
     <Layout data={props.layoutData}>

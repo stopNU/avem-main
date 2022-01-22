@@ -58,7 +58,6 @@ const NavBar = styled.nav`
 const MainNavigation = (props) => {
   const { logo, dark, navItems, button } = props;
   const [isScrolled, setIsScrolled] = useState(false);
-  console.log("props", props);
 
   const handleScroll = (e) => {
     if (e.target.scrollingElement.scrollTop > 0) {

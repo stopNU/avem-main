@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "../../utils/breakpoints";
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -7,7 +6,7 @@ const Wrapper = styled.div`
   padding: 0 30px;
 `;
 
-const ContentWrapper = (props) => {
-  return <Wrapper>{props.children}</Wrapper>;
+const ContentWrapper = ({ className, children }) => {
+  return <Wrapper className={className}>{children}</Wrapper>;
 };
 export default ContentWrapper;
