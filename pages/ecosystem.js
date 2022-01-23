@@ -19,6 +19,7 @@ export default function Contact(props) {
 
       <HeroSimple title={data.hero_title} />
 
+      {data.body1 && <SliceZone sliceZone={data.body1} />}
       {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>
   );

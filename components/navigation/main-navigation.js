@@ -5,6 +5,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import NavLink from "./nav-link";
 
+/* 
+background: linear-gradient(
+70.08deg
+, rgb(85, 32, 140) 0%, rgb(93, 36, 151) 7.74%, rgb(100, 41, 163) 15.72%, rgb(108, 45, 174) 23.55%, rgb(116, 50, 186) 31.44%, rgb(145, 53, 184) 41.76%, rgb(170, 58, 182) 51.37%, rgb(192, 66, 180) 59.62%, rgb(221, 87, 167) 70.53%, rgb(231, 101, 163) 76.65%, rgb(239, 114, 159) 84.9%, rgb(250, 143, 159) 92.77%, rgb(255, 172, 167) 100%);
+*/
+
 const Header = styled.header`
   height: 72px;
   width: 100%;
@@ -12,11 +18,17 @@ const Header = styled.header`
   transition: border-bottom 0.5s;
   z-index: 999;
   opacity: 1;
-  background: ${(props) =>
-    props.isScrolled ? props.theme.colors.background : "0 0"};
-  border-bottom: ${(props) =>
-    props.isScrolled
-      ? `2px solid ${props.theme.colors.primary}`
+  background: ${({ isScrolled, dark, theme }) =>
+    isScrolled && !dark
+      ? "linear-gradient(70.08deg, rgb(85, 32, 140) 0%, rgb(93, 36, 151) 7.74%, rgb(100, 41, 163) 15.72%, rgb(108, 45, 174) 23.55%, rgb(116, 50, 186) 31.44%, rgb(145, 53, 184) 41.76%, rgb(170, 58, 182) 51.37%, rgb(192, 66, 180) 59.62%, rgb(221, 87, 167) 70.53%, rgb(231, 101, 163) 76.65%, rgb(239, 114, 159) 84.9%, rgb(250, 143, 159) 92.77%, rgb(255, 172, 167) 100%)"
+      : isScrolled && dark
+      ? theme.colors.background
+      : "0 0"};
+  border-bottom: ${({ isScrolled, dark, theme }) =>
+    isScrolled && !dark
+      ? `2px solid #FFF`
+      : isScrolled && dark
+      ? `2px solid ${theme.colors.primary}`
       : "2px solid transparent"};
 `;
 
@@ -73,7 +85,7 @@ const MainNavigation = (props) => {
   });
 
   return (
-    <Header isScrolled={isScrolled}>
+    <Header isScrolled={isScrolled} dark={dark}>
       <NavBar dark={dark}>
         <Link href="/">
           <a>

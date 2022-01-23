@@ -54,7 +54,7 @@ const Text = styled.div`
   }
 `;
 
-const Roadmap = ({ slice }) => {
+const CTA = ({ slice }) => {
   return (
     <Section>
       <StyledContentWrapper>
@@ -70,4 +70,4 @@ const Roadmap = ({ slice }) => {
   );
 };
 
-export default Roadmap;
+export default CTA;
