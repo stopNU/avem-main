@@ -5,6 +5,7 @@ import { Client, getLayoutData } from "../utils/prismicHelpers";
 import SliceZone from "../slices/SliceZone";
 
 import HeroSimple from "../components/shared/hero-simple";
+import ContactForm from "../components/forms/contact-form";
 
 export default function Contact(props) {
   const { data } = props.doc;
@@ -18,6 +19,7 @@ export default function Contact(props) {
       </Head>
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
+      <ContactForm />
 
       {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>

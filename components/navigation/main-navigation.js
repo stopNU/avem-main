@@ -5,12 +5,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import NavLink from "./nav-link";
 
-/* 
-background: linear-gradient(
-70.08deg
-, rgb(85, 32, 140) 0%, rgb(93, 36, 151) 7.74%, rgb(100, 41, 163) 15.72%, rgb(108, 45, 174) 23.55%, rgb(116, 50, 186) 31.44%, rgb(145, 53, 184) 41.76%, rgb(170, 58, 182) 51.37%, rgb(192, 66, 180) 59.62%, rgb(221, 87, 167) 70.53%, rgb(231, 101, 163) 76.65%, rgb(239, 114, 159) 84.9%, rgb(250, 143, 159) 92.77%, rgb(255, 172, 167) 100%);
-*/
-
 const Header = styled.header`
   height: 72px;
   width: 100%;
@@ -26,7 +20,7 @@ const Header = styled.header`
       : "0 0"};
   border-bottom: ${({ isScrolled, dark, theme }) =>
     isScrolled && !dark
-      ? `2px solid #FFF`
+      ? `2px solid #F8F8F8`
       : isScrolled && dark
       ? `2px solid ${theme.colors.primary}`
       : "2px solid transparent"};
@@ -57,10 +51,14 @@ const NavBar = styled.nav`
     .btn-wrapper {
       display: flex;
       justify-content: end;
-      color: #fff;
+      color: ${({ dark }) => (dark ? "#FFF" : "#000")};
       a {
-        background: linear-gradient(270deg, #7f38ca 0%, #ffaca7 161.51%);
+        background: ${({ dark, theme }) =>
+          !dark
+            ? `linear-gradient(90deg, #FFFFFF 0%, ${theme.colors.secondary} 100%)`
+            : `linear-gradient(270deg, ${theme.colors.primary} 0%, ${theme.colors.secondary} 161.51%)`};
         padding: 12px 24px;
+        font-weight: 700;
         border-radius: 24px;
       }
     }

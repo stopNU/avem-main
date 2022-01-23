@@ -3,6 +3,7 @@ import { size } from "./utils/breakpoints";
 const theme = {
   colors: {
     primary: "#7F38CA",
+    secondary: "#FFACA7",
     headings: "#423349",
     paragraphs: "#393939",
     background: "#F8F8F8"
