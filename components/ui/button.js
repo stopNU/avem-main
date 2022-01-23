@@ -6,7 +6,7 @@ import { linkResolver } from "../../prismic-configuration";
 //import { device } from "../../utils/breakpoints";
 
 const Btn = styled.a`
-display: inline-block;
+  display: inline-block;
   font-weight: 700;
   cursor: pointer;
 `;
@@ -61,12 +61,20 @@ const Button = ({ children, link, primary, secondary, className }) => {
     return (
       <>
         {primary && (
-          <PrimaryButton href={Link.url(link)} target={link.target}>
+          <PrimaryButton
+            href={Link.url(link)}
+            target={link.target}
+            className={className}
+          >
             {children}
           </PrimaryButton>
         )}
         {secondary && (
-          <SecondaryButton href={Link.url(link)} target={link.target}>
+          <SecondaryButton
+            href={Link.url(link)}
+            target={link.target}
+            className={className}
+          >
             <MdChevronRight />
             {children}
           </SecondaryButton>

@@ -29,7 +29,9 @@ const Headline = styled.div`
   margin: 0 auto;
   text-align: center;
   max-width: 620px;
-  color: #fff;
+  > *{
+    color: #fff;
+  }
   p {
     margin-top: 24px;
   }

@@ -1,6 +1,9 @@
 import Head from "next/head";
 import Layout from "../layouts";
+
 import { Client, getLayoutData } from "../utils/prismicHelpers";
+import SliceZone from "../slices/SliceZone";
+
 import HeroSimple from "../components/shared/hero-simple";
 
 export default function Contact(props) {
@@ -16,7 +19,7 @@ export default function Contact(props) {
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
 
-      <footer>Footer</footer>
+      {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>
   );
 }

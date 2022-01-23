@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Layout from "../layouts";
+
 import { Client, getLayoutData } from "../utils/prismicHelpers";
+import SliceZone from "../slices/SliceZone";
 
 import HeroSimple from "../components/shared/hero-simple";
 
@@ -17,7 +19,9 @@ export default function About(props) {
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
 
-      <footer>Footer</footer>
+      Content
+
+      {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>
   );
 }

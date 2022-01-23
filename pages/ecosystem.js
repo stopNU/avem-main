@@ -1,6 +1,9 @@
 import Head from "next/head";
 import Layout from "../layouts";
+
 import { Client, getLayoutData } from "../utils/prismicHelpers";
+import SliceZone from "../slices/SliceZone";
+
 import HeroSimple from "../components/shared/hero-simple";
 
 export default function Contact(props) {
@@ -16,6 +19,7 @@ export default function Contact(props) {
 
       <HeroSimple title={data.hero_title} />
 
+      {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>
   );
 }
@@ -25,7 +29,8 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 
   const client = Client();
 
-  const doc = (await client.getSingle("ecosystem_page", ref ? { ref } : null)) || {};
+  const doc =
+    (await client.getSingle("ecosystem_page", ref ? { ref } : null)) || {};
   const layoutData = await getLayoutData(client, ref);
 
   return {
