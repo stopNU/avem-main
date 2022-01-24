@@ -22,6 +22,7 @@ const theme = {
     small: "60px",
     default: "90px",
     large: "180px",
+    largeX: "200px",
   },
   breakpoints: {
     ...size,

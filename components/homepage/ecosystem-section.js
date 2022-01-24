@@ -7,7 +7,7 @@ import { RichText } from "prismic-reactjs";
 
 const Section = styled.section`
   padding-top: ${({ theme }) => theme.sections.default};
-  padding-bottom: ${({ theme }) => theme.sections.large};
+  padding-bottom: ${({ theme }) => theme.sections.default};
   //background-color: ${({ theme }) => theme.colors.primary};
 `;
 

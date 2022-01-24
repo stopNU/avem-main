@@ -6,10 +6,11 @@ import LogosBox from "./logos-box";
 import { RichText } from "prismic-reactjs";
 
 const Section = styled.section`
-  padding-top: ${({ theme }) => theme.sections.default};
+  padding-top: ${({ theme }) => (theme.sections.largeX)};
   padding-bottom: ${({ theme }) => theme.sections.default};
   background-color: #ffffff;
-`;
+  margin-top: -120px;
+ `;
 
 const Headline = styled.div`
   text-align: center;
