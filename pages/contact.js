@@ -19,7 +19,10 @@ export default function Contact(props) {
       </Head>
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
-      <ContactForm />
+      <ContactForm
+        receiverEmail={data.email_receive}
+        senderEmail={data.email_sender}
+      />
 
       {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>
@@ -31,7 +34,8 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 
   const client = Client();
 
-  const doc = (await client.getSingle("contact_page", ref ? { ref } : null)) || {};
+  const doc =
+    (await client.getSingle("contact_page", ref ? { ref } : null)) || {};
   const layoutData = await getLayoutData(client, ref);
 
   return {

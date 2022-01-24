@@ -9,6 +9,7 @@ import HeroSection from "../components/homepage/hero-section";
 import IntroSection from "../components/homepage/intro-section";
 import EcosystemSection from "../components/homepage/ecosystem-section";
 import PartnerSection from "../components/homepage/partner-section";
+import RoadmapSection from "../components/homepage/roadmap-section";
 
 export default function Home(props) {
   const { data } = props.doc;
@@ -43,6 +44,11 @@ export default function Home(props) {
       />
 
       <EcosystemSection title={data.eco_title} products={data.eco_products} />
+      <RoadmapSection
+        title={data.roadmap_title}
+        roadmap={data.roadmap_items}
+        background={data.roadmap_background}
+      />
 
       <PartnerSection
         title={data.highlights_title}
@@ -52,7 +58,6 @@ export default function Home(props) {
       />
 
       {data.body && <SliceZone sliceZone={data.body} />}
-
     </Layout>
   );
 }

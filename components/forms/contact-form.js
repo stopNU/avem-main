@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ContactForm = () => {
+const ContactForm = ({receiverEmail, senderEmail}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -13,6 +13,8 @@ const ContactForm = () => {
       body: JSON.stringify({
         email: email,
         name: name,
+        to_email: receiverEmail,
+        from_email: senderEmail,
         subject: "subject test",
         message: message,
       }),
