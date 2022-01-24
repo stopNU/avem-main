@@ -38,6 +38,11 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
     (await client.getSingle("contact_page", ref ? { ref } : null)) || {};
   const layoutData = await getLayoutData(client, ref);
 
+  /* Remove from prod build */
+  if (process.env.NODE_ENV === 'production') {
+    return { notFound: true };
+  }
+
   return {
     props: {
       doc,
