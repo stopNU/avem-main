@@ -2,13 +2,22 @@ import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import Button from "../ui/button";
 import Image from "next/image";
+import BackgroundImage from "../shared/background-image";
+import { device } from "../../utils/breakpoints";
 
 import { RichText } from "prismic-reactjs";
 
 const Section = styled.section`
   padding-top: ${({ theme }) => theme.sections.default};
-  padding-bottom: ${({ theme }) => theme.sections.large};
-  background-color: ${({ theme }) => theme.colors.primary};
+  padding-bottom: ${({ theme }) => theme.sections.default};
+  margin-bottom: 0;
+  @media ${device.mobile} {
+    padding-top: ${({ theme }) => theme.sections.default};
+    padding-bottom: ${({ theme }) => theme.sections.large};
+    margin-bottom: -${({ theme }) => theme.sections.large};
+  }
+  position: relative;
+  z-index: 1;
 `;
 
 const Headline = styled.div`
@@ -24,19 +33,40 @@ const Headline = styled.div`
 `;
 
 const Buttons = styled.div`
-  display: flex;
-  justify-content: center;
-  column-gap: 40px;
   color: #fff;
-  max-width: 400px;
-  margin: 40px auto;
+  text-align: center;
+  margin: 20px auto;
+  a {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  @media ${device.small} {
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+    max-width: 400px;
+  }
+
+  @media ${device.mobile} {
+    margin: 40px auto;
+  }
 `;
 
 const Logos = styled.div`
   display: flex;
   column-gap: 25px;
+  row-gap: 10px;
   justify-content: center;
-  padding-top: 35px;
+  flex-direction: column;
+  text-align: center;
+  @media ${device.small} {
+    flex-direction: row;
+    padding-top: 35px;
+  }
+  @media ${device.mobile} {
+    flex-direction: row;
+    padding-top: 35px;
+  }
   .logo-group {
     padding: 16px 24px;
     background: rgba(0, 0, 0, 0.1);
@@ -50,6 +80,10 @@ const IntroSection = (props) => {
 
   return (
     <Section>
+      <BackgroundImage
+        src="/images/onesteop_bg.png"
+        alt="Spinning planet background"
+      />
       <ContentWrapper>
         <Headline>
           <RichText render={title} />

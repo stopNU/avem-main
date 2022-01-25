@@ -2,7 +2,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 //import "../styles/globals.css";
 import Head from "next/head";
 import theme from "../theme";
-import Layout from "../layouts/index";
+import { device } from "../utils/breakpoints";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -33,13 +33,22 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1{
-    font-size: ${({ theme }) => theme.fontSizes.h1};
-    font-weight: 900;
-    line-height: 54px;
+    font-size: ${({ theme }) => theme.fontSizes.h3};
+    line-height: 44px;
+    font-weight: 800;
+    @media ${device.mobile} {
+      font-size: ${({ theme }) => theme.fontSizes.h1};
+      line-height: 54px;
+      font-weight: 900;
+    }
   }
   h2{
-    font-size: ${({ theme }) => theme.fontSizes.h2};
+    font-size: ${({ theme }) => theme.fontSizes.h4};
+    line-height: 38px;
     font-weight: 800;
+    @media ${device.mobile} {
+      font-size: ${({ theme }) => theme.fontSizes.h2};
+    }
   }
   h3{
     font-size: ${({ theme }) => theme.fontSizes.h3};

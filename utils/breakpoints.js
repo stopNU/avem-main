@@ -1,5 +1,5 @@
 export const size = {
-  xsmall: "500px",
+  small: "500px",
   mobile: "767px",
   tablet: "992px",
   desktop: "1200px",
@@ -7,7 +7,7 @@ export const size = {
   desktopxxl: "1680px",
 };
 export const device = {
-  xsmall: `(min-width: ${size.xsmall})`,
+  small: `(min-width: ${size.small})`,
   mobile: `(min-width: ${size.mobile})`,
   tablet: `(min-width: ${size.tablet})`,
   desktop: `(min-width: ${size.desktop})`,

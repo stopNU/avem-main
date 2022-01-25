@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import Image from "next/image";
-
-import { RichText } from "prismic-reactjs";
+import { device } from "../../utils/breakpoints";
 
 const Box = styled.div`
-  padding: 90px 70px;
+  padding: 65px 40px;
+  @media ${device.mobile} {
+    padding: 90px 70px;
+  }
   background-color: #ffffff;
   box-shadow: 0px 2px 8px rgba(40, 41, 61, 0.04),
     0px 16px 24px rgba(96, 97, 112, 0.16);
@@ -17,12 +19,27 @@ const Headline = styled.h2`
 `;
 
 const Logos = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
+  span {
+    margin: 0 auto !important;
+  }
+  @media ${device.small} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media ${device.mobile} {
+    display: flex;
+    column-gap: 90px;
+    row-gap: 45px;
+    span {
+      margin: 0 !important;
+    }
+  }
   align-items: center;
   justify-content: center;
   text-align: center;
-  column-gap: 90px;
-  row-gap: 45px;
 `;
 
 const Line = styled.div`
@@ -49,6 +66,7 @@ const LogosBox = ({ partners, investors }) => {
                 alt={partner.logo.alt}
                 width={partner.logo.dimensions.width}
                 height={partner.logo.dimensions.height}
+                layout="fixed"
               />
             ))}
           </Logos>
@@ -66,6 +84,7 @@ const LogosBox = ({ partners, investors }) => {
                 alt={investor.logo.alt}
                 width={investor.logo.dimensions.width}
                 height={investor.logo.dimensions.height}
+                layout="fixed"
               />
             ))}
           </Logos>

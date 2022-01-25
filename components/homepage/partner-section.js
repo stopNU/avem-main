@@ -2,15 +2,20 @@ import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import Image from "next/image";
 import LogosBox from "./logos-box";
+import { device } from "../../utils/breakpoints";
 
 import { RichText } from "prismic-reactjs";
 
 const Section = styled.section`
-  padding-top: ${({ theme }) => (theme.sections.largeX)};
-  padding-bottom: ${({ theme }) => theme.sections.default};
+  padding-top: ${({ theme }) => theme.sections.small};
+  padding-bottom: ${({ theme }) => theme.sections.small};
+  @media ${device.mobile} {
+    padding-top: ${({ theme }) => theme.sections.largeX};
+    padding-bottom: ${({ theme }) => theme.sections.default};
+    margin-top: -120px;
+  }
   background-color: #ffffff;
-  margin-top: -120px;
- `;
+`;
 
 const Headline = styled.div`
   text-align: center;
@@ -19,28 +24,38 @@ const Headline = styled.div`
 
 const Highlights = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+  grid-template-columns: 1fr;
+  margin: 40px 0;
+  @media ${device.small} {
+    grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+    margin-bottom: ${({ theme }) => theme.sections.default};
+  }
   text-align: center;
   gap: 24px;
-  margin-top: 40px;
-  margin-bottom: ${({ theme }) => theme.sections.default};
 `;
 
 const Highlight = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid #d2d2d2;
-  background: #ffffff;
-  border-radius: 10px;
+  @media ${device.mobile} {
+    border: 1px solid #d2d2d2;
+    background: #ffffff;
+    border-radius: 10px;
+  }
   .header {
-    padding: 32px 24px;
+    padding: 16px 24px;
+    @media ${device.mobile} {
+      padding: 32px 24px;
+    }
     h5 {
       margin-top: 14px;
     }
   }
   .text {
-    background-color: ${({ theme }) => theme.colors.background};
-    padding: 24px;
+    @media ${device.mobile} {
+      background-color: ${({ theme }) => theme.colors.background};
+      padding: 24px;
+    }
     height: 100%;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;

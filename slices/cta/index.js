@@ -6,8 +6,12 @@ import ContentWrapper from "../../components/ui/content-wrapper";
 import Button from "../../components/ui/button";
 
 const Section = styled.section`
-  padding-top: ${({ theme }) => theme.sections.default};
-  padding-bottom: ${({ theme }) => theme.sections.default};
+  padding-top: ${({ theme }) => theme.sections.small};
+  padding-bottom: ${({ theme }) => theme.sections.small};
+  @media ${device.mobile} {
+    padding-top: ${({ theme }) => theme.sections.default};
+    padding-bottom: ${({ theme }) => theme.sections.default};
+  }
   background: linear-gradient(
       70.08deg,
       #55208c 0%,
@@ -33,15 +37,21 @@ const Section = styled.section`
 `;
 
 const StyledContentWrapper = styled(ContentWrapper)`
-@media ${device.tablet} {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  text-align: center;
+  @media ${device.tablet} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
 `;
 
 const StyledButton = styled(Button)`
   color: #fff;
+  margin-top: 20px;
+  @media ${device.tablet} {
+    margin-top: 0px;
+  }
 `;
 
 const Text = styled.div`
@@ -49,8 +59,11 @@ const Text = styled.div`
     color: #fff;
     font-weight: 400;
   }
-  p{
+  p {
+    margin-top: 16px;
+    @media ${device.tablet} {
       margin-top: 24px;
+    }
   }
 `;
 

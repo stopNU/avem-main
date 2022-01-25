@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import { RichText } from "prismic-reactjs";
+import { device } from "../../utils/breakpoints";
 import Image from "next/image";
 
 const Section = styled.section`
-  padding-top: ${({ theme }) => theme.sections.large};
-  padding-bottom: ${({ theme }) => theme.sections.default};
+  padding-bottom: ${({ theme }) => theme.sections.small};
+  padding-top: ${({ theme }) => theme.sections.small};
+  @media ${device.mobile} {
+    padding-bottom: ${({ theme }) => theme.sections.default};
+    padding-top: ${({ theme }) => theme.sections.large};
+  }
   background: radial-gradient(
       ellipse at 125% 105%,
       #ffaca7 0%,
@@ -24,11 +29,14 @@ const Headline = styled.div`
   text-align: center;
   max-width: 620px;
   margin: 0 auto 24px;
-  h1{
+  h1 {
     color: ${({ theme }) => theme.colors.headings};
   }
   p {
-    margin-top: 24px;
+    margin-top: 8px;
+    @media ${device.mobile} {
+      margin-top: 24px;
+    }
   }
 `;
 
@@ -51,7 +59,10 @@ const Feature = styled.div`
     transition: all 0.3s;
   }
   p {
-    margin-top: 16px;
+    margin-top: 8px;
+    @media ${device.mobile} {
+      margin-top: 16px;
+    }
     font-size: 14px;
   }
   .icon {
