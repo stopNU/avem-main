@@ -45,8 +45,8 @@ const FeaturesSection = ({ features }) => {
   return (
     <Section>
       <ContentWrapper>
-        {features.map((feature) => (
-          <Feature>
+        {features.map((feature, index) => (
+          <Feature key={index}>
             <div>
               <RichText render={feature.title} />
               <RichText render={feature.text} />
