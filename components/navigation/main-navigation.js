@@ -6,7 +6,10 @@ import Image from "next/image";
 import NavLink from "./nav-link";
 
 const Header = styled.header`
-  height: 72px;
+  height: 50px;
+  @media ${device.mobile} {
+    height: 72px;
+  }
   width: 100%;
   position: fixed;
   transition: border-bottom 0.5s;

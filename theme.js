@@ -6,7 +6,7 @@ const theme = {
     secondary: "#FFACA7",
     headings: "#423349",
     paragraphs: "#393939",
-    background: "#F8F8F8"
+    background: "#F8F8F8",
   },
   fonts: ["Mulish", "sans-serif", "Roboto"],
   fontSizes: {
@@ -17,6 +17,9 @@ const theme = {
     h5: "1.5rem", //24px
     h6: "1.25rem",
     text: "1.125rem",
+  },
+  spacing: {
+    text: "24px",
   },
   sections: {
     small: "60px",

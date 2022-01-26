@@ -1,29 +1,45 @@
 import ContentWrapper from "../../components/ui/content-wrapper";
 import styled from "styled-components";
+import { device } from "../../utils/breakpoints";
 
 import Image from "next/image";
 import { SiLinkedin } from "react-icons/si";
 import { RichText } from "prismic-reactjs";
 
 const Section = styled.section`
-  padding-top: ${({ theme }) => theme.sections.default};
-  padding-bottom: ${({ theme }) => theme.sections.default};
+  padding-top: ${({ theme }) => theme.sections.small};
+  padding-bottom: ${({ theme }) => theme.sections.small};
+  @media ${device.mobile} {
+    padding-top: ${({ theme }) => theme.sections.default};
+    padding-bottom: ${({ theme }) => theme.sections.default};
+  }
   background-color: ${({ theme }) => theme.colors.background};
   text-align: center;
 `;
 
 const Team = styled.section`
-  margin-top: 45px;
+  margin-top: 0px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  column-gap: 50px;
-  row-gap: 30px;
+  column-gap: 20px;
+  row-gap: 20px;
+  @media ${device.mobile} {
+    margin-top: 45px;
+    column-gap: 50px;
+    row-gap: 30px;
+  }
 `;
+/*background: ${({ gradient }) =>
+    //  gradient
+    //    ? `linear-gradient(360deg, ${gradient} 0%, rgba(255, 255, 255, 0) 60%)`
+    //    : "none"};*/
 
 const Member = styled.section`
-  margin-top: 45px;
-  .image{
-    background: ${({ gradient }) => gradient ? `linear-gradient(360deg, ${gradient} 0%, rgba(255, 255, 255, 0) 60%)` : 'none'}; 
+  margin-top: 25px;
+  @media ${device.mobile} {
+    margin-top: 45px;
+  }
+  .image {
     border-radius: 100%;
   }
   .icon {
@@ -34,12 +50,18 @@ const Member = styled.section`
   h6 {
     color: ${({ theme }) => theme.colors.primary};
     font-size: 1rem;
-    margin-top: 26px;
+    margin-top: 10px;
+    @media ${device.mobile} {
+      margin-top: 26px;
+    }
   }
   p {
     color: #000000;
     font-size: 1rem;
-    margin-top: 16px;
+    margin-top: 0px;
+    @media ${device.mobile} {
+      margin-top: 16px;
+    }
   }
 `;
 

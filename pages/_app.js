@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
     @media ${device.mobile} {
       font-size: ${({ theme }) => theme.fontSizes.h1};
       line-height: 54px;
-      font-weight: 900;
+      font-weight: 900; 
     }
   }
   h2{
@@ -51,7 +51,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   h3{
-    font-size: ${({ theme }) => theme.fontSizes.h3};
+    font-size: ${({ theme }) => theme.fontSizes.h5};
+    @media ${device.mobile} {
+      font-size: ${({ theme }) => theme.fontSizes.h3};
+    }
     font-weight: 800;
   }
   h4{

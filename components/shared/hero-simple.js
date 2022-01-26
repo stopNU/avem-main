@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import { RichText } from "prismic-reactjs";
+import { device } from "../../utils/breakpoints";
 
 const Section = styled.section`
-  padding-top: ${({ theme }) => theme.sections.large};
-  padding-bottom: ${({ theme }) => theme.sections.default};
+  padding-top: ${({ theme }) => theme.sections.small};
+  padding-bottom: ${({ theme }) => theme.sections.small};
+  @media ${device.mobile} {
+    padding-top: ${({ theme }) => theme.sections.large};
+    padding-bottom: ${({ theme }) => theme.sections.default};
+  }
   background-color: ${({ theme }) => theme.colors.primary};
   background: linear-gradient(
     70.08deg,
@@ -29,7 +34,7 @@ const Headline = styled.div`
   margin: 0 auto;
   text-align: center;
   max-width: 620px;
-  > *{
+  > * {
     color: #fff;
   }
   p {

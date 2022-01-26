@@ -5,10 +5,10 @@ import { Client, getLayoutData } from "../utils/prismicHelpers";
 import SliceZone from "../slices/SliceZone";
 
 import HeroSimple from "../components/shared/hero-simple";
+import FeaturesSection from "../components/about/features-section";
 
 export default function About(props) {
   const { data } = props.doc;
-  console.log("props about", props);
 
   return (
     <Layout data={props.layoutData}>
@@ -18,8 +18,7 @@ export default function About(props) {
       </Head>
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
-
-      Content
+      <FeaturesSection features={data.features} />
 
       {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>
