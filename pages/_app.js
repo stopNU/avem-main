@@ -5,6 +5,9 @@ import theme from "../theme";
 import { device } from "../utils/breakpoints";
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     margin: 0;
     padding: 0;
@@ -62,7 +65,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 800;
   }
   h5{
+    font-size: ${({ theme }) => theme.fontSizes.h6};
+    @media ${device.mobile} {
     font-size: ${({ theme }) => theme.fontSizes.h5};
+    }
     font-weight: 800;
   }
   h6{
@@ -71,7 +77,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 6px 0;
   }
   p{
+    font-size: 1rem;
+    @media ${device.mobile} {
     font-size: ${({ theme }) => theme.fontSizes.text};
+    }
     line-height: 24px;
   }
 `;

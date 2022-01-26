@@ -4,6 +4,7 @@ import { device } from "../../utils/breakpoints";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import NavLink from "./nav-link";
+import ContentWrapper from "../ui/content-wrapper";
 
 const Header = styled.header`
   height: 50px;
@@ -31,7 +32,7 @@ const Header = styled.header`
 
 const NavBar = styled.nav`
   display: none;
-  @media ${device.tablet} {
+  @media ${device.mobile} {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     max-width: ${({ theme }) => theme.breakpoints.desktop};
@@ -87,35 +88,37 @@ const MainNavigation = (props) => {
 
   return (
     <Header isScrolled={isScrolled} dark={dark}>
-      <NavBar dark={dark}>
-        <Link href="/">
-          <a>
-            {logo?.url ? (
-              <Image
-                src={logo.url}
-                alt={logo.alt}
-                width={logo.dimensions.width}
-                height={logo.dimensions.height}
-              />
-            ) : (
-              "Avem"
-            )}
-          </a>
-        </Link>
-        <ul>
-          {navItems.length > 0 &&
-            navItems.map((item) => (
-              <li key={item.link.id}>
-                <NavLink link={item.link}>{item.label}</NavLink>
-              </li>
-            ))}
-        </ul>
-        <div className="btn-wrapper">
-          <NavLink link={button.highlighted_link}>
-            {button.highlighted_label}
-          </NavLink>
-        </div>
-      </NavBar>
+      <ContentWrapper>
+        <NavBar dark={dark}>
+          <Link href="/">
+            <a>
+              {logo?.url ? (
+                <Image
+                  src={logo.url}
+                  alt={logo.alt}
+                  width={logo.dimensions.width}
+                  height={logo.dimensions.height}
+                />
+              ) : (
+                "Avem"
+              )}
+            </a>
+          </Link>
+          <ul>
+            {navItems.length > 0 &&
+              navItems.map((item) => (
+                <li key={item.link.id}>
+                  <NavLink link={item.link}>{item.label}</NavLink>
+                </li>
+              ))}
+          </ul>
+          <div className="btn-wrapper">
+            <NavLink link={button.highlighted_link}>
+              {button.highlighted_label}
+            </NavLink>
+          </div>
+        </NavBar>
+      </ContentWrapper>
     </Header>
   );
 };

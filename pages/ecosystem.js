@@ -8,27 +8,34 @@ import SliceZone from "../slices/SliceZone";
 import HeroSimple from "../components/shared/hero-simple";
 
 const EcoSections = styled.div`
-  section:nth-child(odd){
-    background-color: #FFF;
+  section:nth-child(odd) {
+    background-color: #fff;
   }
-  
 `;
 
 export default function Contact(props) {
   const { data } = props.doc;
-  console.log("props eco", props);
+  let submenu_items = [];
+
+  if (data.body1?.length > 0) {
+    submenu_items = data.body1.map((item) => item.primary.tab_label);
+  }
 
   return (
     <Layout data={props.layoutData}>
       <Head>
-        <title>Contact</title>
-        <meta name="description" content="Contact meta" />
+        <title>ECo</title>
+        <meta name="description" content="Eco meta" />
       </Head>
 
-      <HeroSimple title={data.hero_title} />
+      <HeroSimple
+        title={data.hero_title}
+        backgroundImage="/images/ecosystem_bg.png"
+        submenuItems={submenu_items.length > 0 ? submenu_items : null}
+      />
 
       <EcoSections>
-      {data.body1 && <SliceZone sliceZone={data.body1} />}
+        {data.body1 && <SliceZone sliceZone={data.body1} />}
       </EcoSections>
       {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>
