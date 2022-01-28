@@ -17,8 +17,8 @@ export default function Contact(props) {
   return (
     <Layout data={props.layoutData}>
       <Head>
-        <title>Privacy Policy</title>
-        <meta name="description" content="Privacy Policy" />
+        <title>Privacy Policy - Avem</title>
+        <meta name="description" content="Avem's Privacy Policy." />
       </Head>
 
       <HeroSimple title={data.title} />

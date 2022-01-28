@@ -2,8 +2,8 @@ import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import { RichText } from "prismic-reactjs";
 import { device } from "../../utils/breakpoints";
-import Link from "next/link";
 import BackgroundImage from "./background-image";
+import { Link as ScrollLink } from "react-scroll";
 
 const Section = styled.section`
   position: relative;
@@ -78,9 +78,17 @@ const HeroSimple = ({ title, subtitle, submenuItems, backgroundImage }) => {
   const subMenuEl = hasSubMenu ? (
     <SubMenu>
       {submenuItems.map((item) => (
-        <Link key={item} href={`#${item.toLowerCase().replace(/\s/g, "")}`}>
-          <a className="item">{item}</a>
-        </Link>
+        <ScrollLink
+          key={item}
+          to={`${item.toLowerCase().replace(/\s/g, "")}`}
+          spy={true}
+          smooth={true}
+          duration={500}
+          className="item"
+          style={{ cursor: "pointer" }}
+        >
+          {item}
+        </ScrollLink>
       ))}
     </SubMenu>
   ) : null;

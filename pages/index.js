@@ -3,7 +3,6 @@ import Layout from "../layouts";
 
 import { Client, getLayoutData } from "../utils/prismicHelpers";
 import SliceZone from "../slices/SliceZone";
-//import { linkResolver } from "../../prismic-configuration";
 
 import HeroSection from "../components/homepage/hero-section";
 import IntroSection from "../components/homepage/intro-section";
@@ -18,8 +17,12 @@ export default function Home(props) {
   return (
     <Layout data={props.layoutData} dark>
       <Head>
-        <title>Avem</title>
-        <meta name="description" content="Avem" />
+        <title>{data.meta_title || "Avem"}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={data.meta_description}
+        />
       </Head>
 
       <HeroSection

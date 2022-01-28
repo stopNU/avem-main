@@ -1,7 +1,7 @@
 import MainNavigation from "../components/navigation/main-navigation";
 import Footer from "../components/shared/footer";
 
-const Layout = ({ dark, children, data }) => {
+const Layout = ({ dark, children, data, style }) => {
   const navLogo = dark ? data.color_logo : data.white_logo;
 
   const navItems =

@@ -106,7 +106,9 @@ const EcosystemSection = (props) => {
                 <Button
                   primary
                   link={{
-                    url: "/ecosystem",
+                    url: `/ecosystem#${product.title[0].text
+                      .toLowerCase()
+                      .replace(/\s/g, "")}`,
                     target: "",
                   }}
                 >

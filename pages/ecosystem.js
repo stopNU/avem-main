@@ -24,8 +24,12 @@ export default function Contact(props) {
   return (
     <Layout data={props.layoutData}>
       <Head>
-        <title>ECo</title>
-        <meta name="description" content="Eco meta" />
+        <title>{data.meta_title || "Avem"}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={data.meta_description}
+        />
       </Head>
 
       <HeroSimple

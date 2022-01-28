@@ -13,8 +13,12 @@ export default function About(props) {
   return (
     <Layout data={props.layoutData}>
       <Head>
-        <title>About</title>
-        <meta name="description" content="About" />
+        <title>{data.meta_title || "Avem"}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={data.meta_description}
+        />
       </Head>
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />

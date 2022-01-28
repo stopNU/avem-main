@@ -83,6 +83,7 @@ const Dialog = styled.div`
 const Menu = styled.div`
   text-align: center;
   ul {
+    list-style: none;
     li {
       margin: 10px;
     }
@@ -93,18 +94,16 @@ const MobileMenu = ({ className, children, dark, navItems, logo }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleOpen = () => {
-    console.log("happening", showMenu);
     setShowMenu(true);
   };
 
   const handleClose = () => {
-    console.log("happening", showMenu);
     setShowMenu(false);
   };
 
   return (
     <div className={className}>
-      <MenuIcon onClick={handleOpen} />
+      <MenuIcon onClick={handleOpen} dark={dark} />
 
       <CSSTransitionGroup
         className="transition"

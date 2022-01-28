@@ -14,8 +14,12 @@ export default function Contact(props) {
   return (
     <Layout data={props.layoutData}>
       <Head>
-        <title>Contact</title>
-        <meta name="description" content="Contact meta" />
+        <title>{data.meta_title || "Avem"}</title>
+        <meta
+          name="description"
+          property="og:description"
+          content={data.meta_description}
+        />
       </Head>
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
@@ -39,7 +43,7 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
   const layoutData = await getLayoutData(client, ref);
 
   /* Remove from prod build */
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === "production") {
     return { notFound: true };
   }
 
