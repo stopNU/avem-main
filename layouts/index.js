@@ -17,6 +17,7 @@ const Layout = ({ dark, children, data }) => {
         logo={navLogo}
         navItems={navItems}
         button={highlightedBtn}
+        logo_mobile={data.color_logo}
       />
       <main>{children}</main>
       <Footer
