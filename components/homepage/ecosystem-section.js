@@ -112,7 +112,7 @@ const EcosystemSection = (props) => {
                     target: "",
                   }}
                 >
-                  Learn more
+                  Explore
                 </Button>
               </div>
             </Product>

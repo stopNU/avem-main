@@ -32,6 +32,9 @@ const CloseIcon = styled.div`
 
 const Dialog = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1300;
   inset: 0px;
   transform: none;
@@ -58,6 +61,7 @@ const Dialog = styled.div`
     max-width: 100%;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     border-radius: 0px;
   }
 
@@ -83,7 +87,7 @@ const Menu = styled.div`
     list-style: none;
     li {
       margin: 20px;
-      a{
+      a {
         font-size: 1rem;
       }
     }
