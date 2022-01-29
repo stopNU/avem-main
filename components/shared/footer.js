@@ -4,6 +4,8 @@ import Image from "next/image";
 import NavLink from "../navigation/nav-link";
 import { RichText } from "prismic-reactjs";
 
+import SocialMediaItem from "./social-media-item";
+
 const Section = styled.section`
   padding: 40px 0;
   background-color: #f8f8f8;
@@ -19,6 +21,13 @@ const Menu = styled.ul`
   a {
     color: ${({ theme }) => theme.colors.headings};
   }
+`;
+
+const SocialMedia = styled.ul`
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
 `;
 
 const Copyright = styled.div`
@@ -39,7 +48,8 @@ const Policies = styled.nav`
 `;
 
 const Footer = (props) => {
-  const { logo, navItems, privacyPolicy, terms, copyright } = props;
+  const { logo, navItems, privacyPolicy, terms, copyright, socialMedia } =
+    props;
 
   console.log(privacyPolicy);
 
@@ -66,12 +76,26 @@ const Footer = (props) => {
           </Menu>
         </nav>
 
+        <SocialMedia>
+          {socialMedia.length > 0 &&
+            socialMedia.map((item, index) => (
+              <li key={index}>
+                <SocialMediaItem
+                  platform={item.social_media_platform}
+                  url={item.url.url}
+                />
+              </li>
+            ))}
+        </SocialMedia>
+
         <Copyright>
           <RichText render={copyright} />
         </Copyright>
 
         <Policies>
-          {privacyPolicy && <NavLink link={privacyPolicy}>Privacy Policy</NavLink>}
+          {privacyPolicy && (
+            <NavLink link={privacyPolicy}>Privacy Policy</NavLink>
+          )}
           {terms && <NavLink link={terms}>Terms & Conditions</NavLink>}
         </Policies>
       </ContentWrapper>

@@ -7,6 +7,7 @@ import Image from "next/image";
 const Section = styled.section`
   padding-bottom: ${({ theme }) => theme.sections.small};
   padding-top: ${({ theme }) => theme.sections.small};
+  overflow: hidden;
   @media ${device.mobile} {
     padding-bottom: ${({ theme }) => theme.sections.default};
     padding-top: ${({ theme }) => theme.sections.large};

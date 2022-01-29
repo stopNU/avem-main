@@ -42,7 +42,7 @@ const Header = styled.header`
     display: flex;
     justify-content: center;
     color: #fff;
-    margin-top: 30px;
+    margin-top: 50px;
     @media ${device.mobile} {
       justify-content: end;
       margin-top: 0px;

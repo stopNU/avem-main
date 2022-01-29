@@ -3,17 +3,16 @@ import ContentWrapper from "../ui/content-wrapper";
 import { RichText } from "prismic-reactjs";
 import { device } from "../../utils/breakpoints";
 import BackgroundImage from "./background-image";
-import { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink, scroller } from "react-scroll";
 
 const Section = styled.section`
   position: relative;
   z-index: 0;
   padding-top: ${({ theme }) => theme.sections.small};
-  padding-bottom: ${({ theme }) => theme.sections.small};
+  padding-bottom: ${({ theme, submenu }) =>
+    submenu ? 0 : theme.sections.default};
   @media ${device.mobile} {
     padding-top: ${({ theme }) => theme.sections.large};
-    padding-bottom: ${({ theme, submenu }) =>
-      submenu ? 0 : theme.sections.default};
   }
   background-color: ${({ theme }) => theme.colors.primary};
   background: linear-gradient(
@@ -48,26 +47,56 @@ const Headline = styled.div`
 `;
 
 const SubMenu = styled.div`
-  display: none;
-  @media ${device.mobile} {
-    display: flex;
-  }
+  display: flex;
   justify-content: center;
-  position: relative;
-  margin-top: 150px;
-  .item {
-    padding: 16px 14px;
-    @media ${device.tablet} {
+  margin-top: 30px;
+  @media ${device.mobile} {
+    margin-top: 150px;
+    position: relative;
+    .item {
       padding: 16px 14px;
+      @media ${device.tablet} {
+        padding: 16px 14px;
+      }
+      @media ${device.desktop} {
+        padding: 16px 24px;
+      }
+      font-weight: 800;
+      font-size: 1rem;
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 8px 8px 0px 0px;
+      }
     }
-    @media ${device.desktop} {
-      padding: 16px 24px;
+  }
+
+  .desk {
+    display: none;
+    @media ${device.mobile} {
+      display: flex;
     }
-    font-weight: 800;
-    font-size: 1rem;
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 8px 8px 0px 0px;
+  }
+
+  .mobile {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    width: 100%;
+    select {
+      width: 100%;
+      max-width: 330px;
+      padding: 18px 24px;
+      font-size: ${({ theme }) => theme.fontSizes.h6};
+      font-weight: 700;
+      border-radius: 10px;
+      appearance: none;
+      background-image: url("data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjYXJldC1kb3duIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY2FyZXQtZG93biBmYS13LTEwIiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMyMCA1MTIiPjxwYXRoIGZpbGw9IiM4RTM0QjYiIGQ9Ik0zMS4zIDE5MmgyNTcuM2MxNy44IDAgMjYuNyAyMS41IDE0LjEgMzQuMUwxNzQuMSAzNTQuOGMtNy44IDcuOC0yMC41IDcuOC0yOC4zIDBMMTcuMiAyMjYuMUM0LjYgMjEzLjUgMTMuNSAxOTIgMzEuMyAxOTJ6Ij48L3BhdGg+PC9zdmc+");
+      background-repeat: no-repeat, repeat;
+      background-position: right 0.7em top 50%, 0 0;
+      background-size: 0.65em auto, 100%;
+    }
+    @media ${device.mobile} {
+      display: none;
     }
   }
 `;
@@ -75,21 +104,40 @@ const SubMenu = styled.div`
 const HeroSimple = ({ title, subtitle, submenuItems, backgroundImage }) => {
   const hasSubMenu = submenuItems?.length > 0;
 
+  const handleChange = (event) => {
+    scroller.scrollTo(event.target.value, {
+      duration: 500,
+      delay: 0,
+      smooth: true,
+    });
+  };
+
   const subMenuEl = hasSubMenu ? (
     <SubMenu>
-      {submenuItems.map((item) => (
-        <ScrollLink
-          key={item}
-          to={`${item.toLowerCase().replace(/\s/g, "")}`}
-          spy={true}
-          smooth={true}
-          duration={500}
-          className="item"
-          style={{ cursor: "pointer" }}
-        >
-          {item}
-        </ScrollLink>
-      ))}
+      <div className="desk">
+        {submenuItems.map((item) => (
+          <ScrollLink
+            key={item}
+            to={`${item.toLowerCase().replace(/\s/g, "")}`}
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="item"
+            style={{ cursor: "pointer" }}
+          >
+            {item}
+          </ScrollLink>
+        ))}
+      </div>
+      <div className="mobile">
+        <select name="submenu_items" id="submenu_items" onChange={handleChange}>
+          {submenuItems.map((item) => (
+            <option value={`${item.toLowerCase().replace(/\s/g, "")}`}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </div>
     </SubMenu>
   ) : null;
 

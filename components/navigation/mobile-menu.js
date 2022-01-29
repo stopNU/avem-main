@@ -1,4 +1,3 @@
-import Link from "next/link";
 import NavLink from "./nav-link";
 import styled from "styled-components";
 import Image from "next/image";
@@ -20,6 +19,7 @@ const MenuIcon = styled(GiHamburgerMenu)`
   height: 100%;
   font-size: 1.4rem;
   color: ${({ dark }) => (dark ? "#000" : "#FFF")};
+  cursor: pointer;
   @media ${device.mobile} {
     display: none;
   }
@@ -63,11 +63,9 @@ const Dialog = styled.div`
 
   &.slide-enter {
     height: 0;
-    //transform: scale(0.9);
   }
   &.slide-enter-active {
     height: 100%;
-    //transform: translateX(0);
     transition: all 200ms ease-in;
   }
   &.slide-exit {
@@ -75,7 +73,6 @@ const Dialog = styled.div`
   }
   &.slide-exit-active {
     height: 0;
-    //transform: scale(0.9);
     transition: all 200ms ease-in;
   }
 `;
@@ -87,14 +84,13 @@ const Menu = styled.div`
     li {
       margin: 20px;
       a{
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
   }
 `;
 
 const MobileMenu = ({ className, children, dark, navItems, logo }) => {
-  console.log("dark", dark)
   const [showMenu, setShowMenu] = useState(false);
 
   const handleOpen = () => {

@@ -22,7 +22,7 @@ export default function About(props) {
       </Head>
 
       <HeroSimple title={data.hero_title} subtitle={data.hero_subtitle} />
-      <FeaturesSection features={data.features} />
+      <FeaturesSection features={data.features} symbol={data.symbol} />
 
       {data.body && <SliceZone sliceZone={data.body} />}
     </Layout>

@@ -23,6 +23,7 @@ const Layout = ({ dark, children, data, style }) => {
       <Footer
         logo={data.color_logo}
         navItems={navItems}
+        socialMedia={data.social_media_list}
         copyright={data.copyright_text}
         privacyPolicy={data.privacy_policy_link}
         terms={data.terms_link}
