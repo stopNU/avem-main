@@ -29,7 +29,16 @@ const SocialMediaItem = ({ url, platform }) => {
       icon = "";
   }
 
-  return <a href={url} target="_blank" title={`Go to ${platform}`}>{icon}</a>;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      title={`Go to ${platform}`}
+    >
+      {icon}
+    </a>
+  );
 };
 
 export default SocialMediaItem;

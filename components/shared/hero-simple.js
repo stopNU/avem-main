@@ -132,7 +132,10 @@ const HeroSimple = ({ title, subtitle, submenuItems, backgroundImage }) => {
       <div className="mobile">
         <select name="submenu_items" id="submenu_items" onChange={handleChange}>
           {submenuItems.map((item) => (
-            <option value={`${item.toLowerCase().replace(/\s/g, "")}`}>
+            <option
+              value={`${item.toLowerCase().replace(/\s/g, "")}`}
+              key={item}
+            >
               {item}
             </option>
           ))}
