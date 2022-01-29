@@ -12,7 +12,7 @@ import RoadmapSection from "../components/homepage/roadmap-section";
 
 export default function Home(props) {
   const { data } = props.doc;
-  console.log("props", props);
+  //console.log("props", props);
 
   return (
     <Layout data={props.layoutData} dark>

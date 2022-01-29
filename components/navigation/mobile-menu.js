@@ -3,7 +3,7 @@ import NavLink from "./nav-link";
 import styled from "styled-components";
 import Image from "next/image";
 import { device } from "../../utils/breakpoints";
-import { CSSTransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -61,22 +61,22 @@ const Dialog = styled.div`
     border-radius: 0px;
   }
 
-  &.slide-down-enter {
-    height: 1px;
+  &.slide-enter {
+    height: 0;
+    //transform: scale(0.9);
   }
-
-  &.slide-down-enter.slide-down-enter-active {
-    transition: all 300ms ease-in;
+  &.slide-enter-active {
+    height: 100%;
+    //transform: translateX(0);
+    transition: all 200ms ease-in;
+  }
+  &.slide-exit {
     height: 100%;
   }
-
-  &.slide-down-leave {
-    height: 100%;
-  }
-
-  &.slide-down-leave.slide-down-leave-active {
-    height: 0px;
-    transition: all 300ms ease-in;
+  &.slide-exit-active {
+    height: 0;
+    //transform: scale(0.9);
+    transition: all 200ms ease-in;
   }
 `;
 
@@ -85,12 +85,16 @@ const Menu = styled.div`
   ul {
     list-style: none;
     li {
-      margin: 10px;
+      margin: 20px;
+      a{
+        font-size: 1.2rem;
+      }
     }
   }
 `;
 
 const MobileMenu = ({ className, children, dark, navItems, logo }) => {
+  console.log("dark", dark)
   const [showMenu, setShowMenu] = useState(false);
 
   const handleOpen = () => {
@@ -105,47 +109,45 @@ const MobileMenu = ({ className, children, dark, navItems, logo }) => {
     <div className={className}>
       <MenuIcon onClick={handleOpen} dark={dark} />
 
-      <CSSTransitionGroup
-        className="transition"
-        transitionName="slide-down"
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300}
+      <CSSTransition
+        in={showMenu}
+        timeout={200}
+        classNames="slide"
+        unmountOnExit
       >
-        {showMenu ? (
-          <Dialog>
-            <div className="root">
-              <Header>
-                <a className="logo">
-                  {logo?.url ? (
-                    <Image
-                      src={logo.url}
-                      alt={logo.alt}
-                      width={logo.dimensions.width}
-                      height={logo.dimensions.height}
-                    />
-                  ) : (
-                    "Avem"
-                  )}
-                </a>
-                <CloseIcon>
-                  <MdOutlineClose onClick={handleClose} />
-                </CloseIcon>
-              </Header>
-              <Menu>
-                <ul>
-                  {navItems.length > 0 &&
-                    navItems.map((item) => (
-                      <li key={item.link.id}>
-                        <NavLink link={item.link}>{item.label}</NavLink>
-                      </li>
-                    ))}
-                </ul>
-                {children}
-              </Menu>
-            </div>
-          </Dialog>
-        ) : null}
-      </CSSTransitionGroup>
+        <Dialog>
+          <div className="root">
+            <Header>
+              <a className="logo">
+                {logo?.url ? (
+                  <Image
+                    src={logo.url}
+                    alt={logo.alt}
+                    width={logo.dimensions.width}
+                    height={logo.dimensions.height}
+                  />
+                ) : (
+                  "Avem"
+                )}
+              </a>
+              <CloseIcon>
+                <MdOutlineClose onClick={handleClose} />
+              </CloseIcon>
+            </Header>
+            <Menu>
+              <ul>
+                {navItems.length > 0 &&
+                  navItems.map((item) => (
+                    <li key={item.link.id}>
+                      <NavLink link={item.link}>{item.label}</NavLink>
+                    </li>
+                  ))}
+              </ul>
+              {children}
+            </Menu>
+          </div>
+        </Dialog>
+      </CSSTransition>
     </div>
   );
 };

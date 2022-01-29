@@ -25,6 +25,13 @@ const Section = styled.section`
     );
 `;
 
+const ImageWrapper = styled.div`
+  margin: 0 -90px;
+  @media ${device.mobile} {
+    margin: inherit;
+  }
+`;
+
 const Headline = styled.div`
   text-align: center;
   max-width: 620px;
@@ -80,12 +87,14 @@ const HeroSection = (props) => {
           <RichText render={title} />
           <RichText render={subtitle} />
         </Headline>
-        <Image
-          src={image.url}
-          alt={image.alt}
-          width={image.dimensions.width}
-          height={image.dimensions.height}
-        />
+        <ImageWrapper>
+          <Image
+            src={image.url}
+            alt={image.alt}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+          />
+        </ImageWrapper>
         <Features>
           {features.map((feature, index) => (
             <Feature key={index}>
