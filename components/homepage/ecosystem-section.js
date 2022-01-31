@@ -1,3 +1,4 @@
+//import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import Image from "next/image";
@@ -38,6 +39,13 @@ const Products = styled.div`
   row-gap: 90px;
 `;
 
+/*const SymbolTop = styled.div`
+  position: absolute;
+  top: -230px;
+  right: 50px;
+  z-index: 6;
+`;*/
+
 const Product = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,17 +72,24 @@ const Product = styled.div`
   }
 `;
 
-const Background = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  > span {
-    z-index: -1;
-  }
-`;
-
 const EcosystemSection = (props) => {
-  const { title, products } = props;
+  const { title, products, symbol_1 } = props;
+  //const [offset, setOffset] = useState(0);
+  //const symbol1 = useRef();
+
+  //useEffect(() => {
+    //const onScroll = () => setOffset(window.pageYOffset);
+    /*const onScroll = (e) => {
+      console.log(symbol1.current.style.transform);
+      //symbol1.current.style.bottom = window.pageYOffset/10 + 'px';
+      symbol1.current.style.transform = `translate3d(12px, ${window.pageYOffset/5}px, 1em)`;
+    }
+
+    // clean up code
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);*/
+//}, []);
 
   return (
     <Section>
@@ -83,6 +98,14 @@ const EcosystemSection = (props) => {
         alt="Shape backgrounds"
         hide="mobile"
       />
+      {/*<SymbolTop ref={symbol1}>
+        <Image
+          src={symbol_1.url}
+          alt={symbol_1.alt}
+          width={symbol_1.dimensions.width}
+          height={symbol_1.dimensions.height}
+        />
+  </SymbolTop>*/}
       <ContentWrapper>
         <Headline>
           <RichText render={title} />
