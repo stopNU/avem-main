@@ -14,12 +14,6 @@ const Section = styled.section`
   }
 `;
 
-const StyledContentWrapper = styled(ContentWrapper)`
-  @media ${device.mobile} {
-    position: relative;
-  }
-`;
-
 const Feature = styled.div`
   text-align: center;
   @media ${device.tablet} {
@@ -43,7 +37,7 @@ const Feature = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+/*const ImageWrapper = styled.div`
   display: none;
   @media ${device.mobile} {
     display: block;
@@ -51,7 +45,7 @@ const ImageWrapper = styled.div`
     top: -${({ theme }) => theme.sections.largeX};
     right: 0;
   }
-`;
+`;*/
 
 const FeaturesSection = ({ features, symbol }) => {
   if (features.length === 0) {
@@ -60,15 +54,7 @@ const FeaturesSection = ({ features, symbol }) => {
 
   return (
     <Section>
-      <StyledContentWrapper>
-        <ImageWrapper>
-          <Image
-            src={symbol.url}
-            width={symbol.dimensions.width}
-            height={symbol.dimensions.height}
-            alt={symbol.alt}
-          />
-        </ImageWrapper>
+      <ContentWrapper>
         {features.map((feature, index) => (
           <Feature key={index}>
             <div>
@@ -77,7 +63,7 @@ const FeaturesSection = ({ features, symbol }) => {
             </div>
           </Feature>
         ))}
-      </StyledContentWrapper>
+      </ContentWrapper>
     </Section>
   );
 };

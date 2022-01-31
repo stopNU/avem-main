@@ -3,6 +3,7 @@ import Layout from "../layouts";
 import styled from "styled-components";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { device } from "../utils/breakpoints";
 
 import { Client, getLayoutData } from "../utils/prismicHelpers";
 import SliceZone from "../slices/SliceZone";
@@ -13,56 +14,64 @@ import EcosystemSection from "../components/homepage/ecosystem-section";
 import PartnerSection from "../components/homepage/partner-section";
 import RoadmapSection from "../components/homepage/roadmap-section";
 
-const SymbolTop = styled.div`
-  position: absolute;
-  //: -230px;
-  will-change: transform;
-  transform-style: preserve-3d;
-  right: 50px;
-  //transition-duration: 0.3s;
-  //transition-timing-function: ease-in-out;
-  //transition-delay: 0.1s;
-  z-index: 6;
+const Symbol = styled.div`
+  display: none;
+  @media ${device.desktopxl} {
+    position: absolute;
+    will-change: transform;
+    transform-style: preserve-3d;
+    z-index: 6;
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    display: flex;
+    left: 0;
+    right: 0;
+    justify-content: end;
+  }
 `;
 
-const SymbolBottom = styled.div`
-  position: absolute;
-  //: -230px;
-  will-change: transform;
-  transform-style: preserve-3d;
-  //    transform: translate3d(0px, 35.4638px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-  left: 50px;
-  z-index: 6;
-  
+const Symbol1 = styled(Symbol)``;
+
+const Symbol2 = styled(Symbol)`
+  justify-content: start;
+  margin-top: -400px;
 `;
 
-const setTranslate = (xPos, yPos, el) =>  {
+const Symbol3 = styled(Symbol)`
+  margin-top: -900px;
+`;
+
+const setTranslate = (xPos, yPos, el) => {
   el.current.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-}
+};
 
 export default function Home(props) {
   const { data } = props.doc;
   const symbol1 = useRef();
   const symbol2 = useRef();
+  const symbol3 = useRef();
   //console.log("props", props);
 
   useEffect(() => {
-    //const onScroll = () => setOffset(window.pageYOffset);
     const storeRequestAnimationFrame = () => requestAnimationFrame;
     const onScroll = (e) => {
-      console.log(window, window.pageYOffset, symbol1.current.offsetTop);
-
-      storeRequestAnimationFrame(setTranslate(12, window.pageYOffset/3, symbol1));
-      storeRequestAnimationFrame(setTranslate(12, window.pageYOffset/6, symbol2));
-      //symbol1.current?.style.transform = `translate3d(12px, ${window.pageYOffset/3}px, 1em) scale3d(1, 1, 1)`;
-      //symbol2.current?.style.transform = `translate3d(12px, -${window.pageYOffset/5}px, 1em) scale3d(1, 1, 1)`;
-    }
+      storeRequestAnimationFrame(
+        setTranslate(12, window.pageYOffset / 3, symbol1)
+      );
+      storeRequestAnimationFrame(
+        setTranslate(12, window.pageYOffset / 5, symbol2)
+      );
+      storeRequestAnimationFrame(
+        setTranslate(12, window.pageYOffset / 6, symbol3)
+      );
+    };
 
     // clean up code
-    window.removeEventListener('scroll', onScroll);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-}, []);
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <Layout data={props.layoutData} dark>
@@ -82,14 +91,14 @@ export default function Home(props) {
         features={data.features}
       />
 
-      <SymbolTop ref={symbol1}>
+      <Symbol1 ref={symbol1}>
         <Image
           src={data.symbol_1.url}
           alt={data.symbol_1.alt}
           width={data.symbol_1.dimensions.width}
           height={data.symbol_1.dimensions.height}
         />
-      </SymbolTop>
+      </Symbol1>
 
       <IntroSection
         title={data.intro_title}
@@ -105,28 +114,31 @@ export default function Home(props) {
         logos={data.intro_logos}
       />
 
-      
+      <EcosystemSection title={data.eco_title} products={data.eco_products} />
 
-      <EcosystemSection
-        title={data.eco_title}
-        products={data.eco_products}
-        symbol_1={data.symbol_1}
-      />
-
-      <SymbolBottom ref={symbol2}>
+      <Symbol2 ref={symbol2}>
         <Image
           src={data.symbol_2.url}
           alt={data.symbol_2.alt}
           width={data.symbol_2.dimensions.width}
           height={data.symbol_2.dimensions.height}
         />
-      </SymbolBottom>
+      </Symbol2>
 
       <RoadmapSection
         title={data.roadmap_title}
         roadmap={data.roadmap_items}
         background={data.roadmap_background}
       />
+
+      <Symbol3 ref={symbol3}>
+        <Image
+          src={data.symbol_3.url}
+          alt={data.symbol_3.alt}
+          width={data.symbol_3.dimensions.width}
+          height={data.symbol_3.dimensions.height}
+        />
+      </Symbol3>
 
       <PartnerSection
         title={data.highlights_title}

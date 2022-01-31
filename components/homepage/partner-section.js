@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import Image from "next/image";
 import LogosBox from "./logos-box";
+import Card from "../ui/card";
 import { device } from "../../utils/breakpoints";
 
 import { RichText } from "prismic-reactjs";
@@ -78,20 +79,12 @@ const PartnerSection = (props) => {
         <Highlights>
           {product_hightlights.length > 0 &&
             product_hightlights.map((highlight, index) => (
-              <Highlight key={index}>
-                <div className="header">
-                  <Image
-                    src={highlight.icon.url}
-                    alt={highlight.icon.alt}
-                    width={highlight.icon.dimensions.width}
-                    height={highlight.icon.dimensions.height}
-                  />
-                  <RichText render={highlight.title} />
-                </div>
-                <div className="text">
-                  <RichText render={highlight.text} />
-                </div>
-              </Highlight>
+              <Card
+                key={index}
+                title={highlight.title}
+                text={highlight.text}
+                icon={highlight.icon}
+              />
             ))}
         </Highlights>
 

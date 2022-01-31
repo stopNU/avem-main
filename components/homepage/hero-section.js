@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ContentWrapper from "../ui/content-wrapper";
 import { RichText } from "prismic-reactjs";
 import { device } from "../../utils/breakpoints";
+import Card from "../ui/card";
 import Image from "next/image";
 
 const Section = styled.section`
@@ -56,28 +57,6 @@ const Features = styled.div`
   margin-top: 75px;
 `;
 
-const Feature = styled.div`
-  border: 1px solid #d2d2d2;
-  border-radius: 10px;
-  padding: 24px;
-  &:hover {
-    background: #ffffff;
-    box-shadow: 0px 2.72797px 5.45594px rgba(40, 41, 61, 0.04),
-      0px 10.9119px 21.8238px rgba(96, 97, 112, 0.16);
-    transition: all 0.3s;
-  }
-  p {
-    margin-top: 8px;
-    @media ${device.mobile} {
-      margin-top: 16px;
-    }
-    font-size: 14px;
-  }
-  .icon {
-    margin-bottom: 24px;
-  }
-`;
-
 const HeroSection = (props) => {
   const { title, subtitle, image, features } = props;
 
@@ -98,20 +77,12 @@ const HeroSection = (props) => {
         </ImageWrapper>
         <Features>
           {features.map((feature, index) => (
-            <Feature key={index}>
-              {feature.icon.url && (
-                <div className="icon">
-                  <Image
-                    src={feature.icon.url}
-                    alt={feature.icon.alt}
-                    width={feature.icon.dimensions.width}
-                    height={feature.icon.dimensions.height}
-                  />
-                </div>
-              )}
-              <RichText render={feature.features_title} />
-              <RichText render={feature.text} />
-            </Feature>
+            <Card
+              key={index}
+              title={feature.features_title}
+              text={feature.text}
+              icon={feature.icon}
+            />
           ))}
         </Features>
       </ContentWrapper>
