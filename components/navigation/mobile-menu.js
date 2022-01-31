@@ -15,13 +15,15 @@ const Header = styled.div`
   padding: 5px 24px;
 `;
 
-const MenuIcon = styled(GiHamburgerMenu)`
-  height: 100%;
-  font-size: 1.4rem;
-  color: ${({ dark }) => (dark ? "#000" : "#FFF")};
-  cursor: pointer;
-  @media ${device.mobile} {
-    display: none;
+const MenuIconWrapper = styled.div`
+  svg {
+    height: 100%;
+    font-size: 1.4rem;
+    color: ${({ dark }) => (dark ? "#000" : "#FFF")};
+    cursor: pointer;
+    @media ${device.mobile} {
+      display: none;
+    }
   }
 `;
 
@@ -107,7 +109,9 @@ const MobileMenu = ({ className, children, dark, navItems, logo }) => {
 
   return (
     <div className={className}>
-      <MenuIcon onClick={handleOpen} dark={dark} />
+      <MenuIconWrapper dark={dark}>
+        <GiHamburgerMenu onClick={handleOpen} />
+      </MenuIconWrapper>
 
       <CSSTransition
         in={showMenu}

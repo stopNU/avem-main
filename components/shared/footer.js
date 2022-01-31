@@ -51,8 +51,6 @@ const Footer = (props) => {
   const { logo, navItems, privacyPolicy, terms, copyright, socialMedia } =
     props;
 
-  console.log(privacyPolicy);
-
   return (
     <Section>
       <ContentWrapper>
