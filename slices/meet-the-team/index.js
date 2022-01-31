@@ -17,10 +17,10 @@ const Section = styled.section`
   text-align: center;
 `;
 
-const Team = styled.section`
+const Team = styled.div`
   margin-top: 0px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   column-gap: 20px;
   row-gap: 20px;
   @media ${device.mobile} {
@@ -28,13 +28,14 @@ const Team = styled.section`
     column-gap: 50px;
     row-gap: 30px;
   }
+  @media ${device.tablet} {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
-/*background: ${({ gradient }) =>
-    //  gradient
-    //    ? `linear-gradient(360deg, ${gradient} 0%, rgba(255, 255, 255, 0) 60%)`
-    //    : "none"};*/
 
-const Member = styled.section`
+const Member = styled.div`
   margin-top: 25px;
   @media ${device.mobile} {
     margin-top: 45px;

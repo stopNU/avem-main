@@ -20,14 +20,15 @@ const Feature = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-flow: dense;
-    column-gap: 210px;
+    align-items: center;
+    column-gap: 100px;
     text-align: left;
-    &:nth-child(odd) div {
+    &:nth-child(even) div {
       grid-column-start: 2;
     }
   }
   &:not(:last-child) {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   p {
     margin-top: 12px;
@@ -36,16 +37,6 @@ const Feature = styled.div`
     }
   }
 `;
-
-/*const ImageWrapper = styled.div`
-  display: none;
-  @media ${device.mobile} {
-    display: block;
-    position: absolute;
-    top: -${({ theme }) => theme.sections.largeX};
-    right: 0;
-  }
-`;*/
 
 const FeaturesSection = ({ features, symbol }) => {
   if (features.length === 0) {
@@ -61,6 +52,12 @@ const FeaturesSection = ({ features, symbol }) => {
               <RichText render={feature.title} />
               <RichText render={feature.text} />
             </div>
+            <Image
+              src={feature.image.url}
+              alt={feature.image.alt}
+              width={feature.image.dimensions.width}
+              height={feature.image.dimensions.height}
+            />
           </Feature>
         ))}
       </ContentWrapper>
