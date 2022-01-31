@@ -28,42 +28,11 @@ const Highlights = styled.div`
   grid-template-columns: 1fr;
   margin: 40px 0;
   @media ${device.small} {
-    grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(261px, 1fr));
     margin-bottom: ${({ theme }) => theme.sections.default};
   }
   text-align: center;
   gap: 24px;
-`;
-
-const Highlight = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media ${device.mobile} {
-    border: 1px solid #d2d2d2;
-    background: #ffffff;
-    border-radius: 10px;
-  }
-  .header {
-    padding: 16px 24px;
-    @media ${device.mobile} {
-      padding: 32px 24px;
-    }
-    h5 {
-      margin-top: 14px;
-    }
-  }
-  .text {
-    @media ${device.mobile} {
-      background-color: ${({ theme }) => theme.colors.background};
-      padding: 24px;
-    }
-    height: 100%;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    p {
-      font-size: 1rem;
-    }
-  }
 `;
 
 const PartnerSection = (props) => {
