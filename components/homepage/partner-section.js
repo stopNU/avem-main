@@ -35,9 +35,9 @@ const Highlights = styled.div`
   gap: 24px;
 `;
 
-const PartnerSection = (props) => {
-  const { title, product_hightlights, partners, investors } = props;
-
+const PartnerSection = ({ title, product_hightlights, partners, investors }) => {
+  const showLogosSection = partners.length > 0 || investors.length > 0 ? true : false;
+  
   return (
     <Section>
       <ContentWrapper>
@@ -57,7 +57,7 @@ const PartnerSection = (props) => {
             ))}
         </Highlights>
 
-        <LogosBox partners={partners} investors={investors} />
+        {showLogosSection && <LogosBox partners={partners} investors={investors} />}
       </ContentWrapper>
     </Section>
   );

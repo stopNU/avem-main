@@ -4,12 +4,15 @@ import {
   FaRedditAlien,
   FaLinkedin,
 } from "react-icons/fa";
-import { BsMedium } from "react-icons/bs";
+import { BsMedium, BsTelegram } from "react-icons/bs";
 
 const SocialMediaItem = ({ url, platform }) => {
   let icon;
 
   switch (platform) {
+    case "Telegram (circle)":
+      icon = <BsTelegram />;
+      break;
     case "Telegram":
       icon = <FaTelegramPlane />;
       break;
@@ -34,7 +37,7 @@ const SocialMediaItem = ({ url, platform }) => {
       href={url}
       target="_blank"
       rel="noreferrer"
-      title={`Go to ${platform}`}
+      title={`Go to website`}
     >
       {icon}
     </a>
