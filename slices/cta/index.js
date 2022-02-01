@@ -55,11 +55,13 @@ const StyledButton = styled(Button)`
 `;
 
 const Text = styled.div`
-  * {
+  h1,
+  h2 {
     color: #fff;
-    font-weight: 400;
+    font-weight: 800;
   }
   p {
+    color: #fff;
     margin-top: 16px;
     @media ${device.tablet} {
       margin-top: 24px;
@@ -73,7 +75,9 @@ const CTA = ({ slice }) => {
       <StyledContentWrapper>
         <Text>
           <RichText render={slice.primary.title} />
-          <RichText render={slice.primary.text} />
+          {slice.primary.text[0].text !== "" && (
+            <RichText render={slice.primary.text} />
+          )}
         </Text>
         <StyledButton primary link={slice.primary.button_link}>
           {slice.primary.button_label}
