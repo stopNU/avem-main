@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "postbuild": "next-sitemap --config custom-next-sitemap.js"
   },
   "dependencies": {
     "@prismicio/client": "^5.0.0",
