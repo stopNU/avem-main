@@ -25,12 +25,12 @@ const Header = styled.header`
       : isScrolled && dark
       ? theme.colors.background
       : "0 0"};
-  border-bottom: ${({ isScrolled, dark, theme }) =>
+  /*border-bottom: ${({ isScrolled, dark, theme }) =>
     isScrolled && !dark
       ? `2px solid #F8F8F8`
       : isScrolled && dark
       ? `2px solid ${theme.colors.primary}`
-      : "2px solid transparent"};
+      : "2px solid transparent"};*/
 
   .btn-wrapper {
     &.hide-mobile {
@@ -160,9 +160,9 @@ const MainNavigation = (props) => {
           </MobileMenu>
 
           <div className="btn-wrapper hide-mobile">
-            <NavLink link={button.highlighted_link}>
+            {button.highlighted_link.url && <NavLink link={button.highlighted_link}>
               {button.highlighted_label}
-            </NavLink>
+            </NavLink>}
           </div>
         </NavBar>
       </ContentWrapper>

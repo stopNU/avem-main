@@ -91,10 +91,10 @@ const Footer = (props) => {
         </Copyright>
 
         <Policies>
-          {privacyPolicy && (
+          {privacyPolicy.url && (
             <NavLink link={privacyPolicy}>Privacy Policy</NavLink>
           )}
-          {terms && <NavLink link={terms}>Terms & Conditions</NavLink>}
+          {terms.url && <NavLink link={terms}>Terms & Conditions</NavLink>}
         </Policies>
       </ContentWrapper>
     </Section>

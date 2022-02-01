@@ -12,7 +12,7 @@ const Section = styled.section`
   padding-bottom: ${({ theme }) => theme.sections.default};
   margin-bottom: 0;
   @media ${device.mobile} {
-    padding-top: ${({ theme }) => theme.sections.default};
+    padding-top: ${({ theme }) => theme.sections.large};
     padding-bottom: ${({ theme }) => theme.sections.large};
     margin-bottom: -${({ theme }) => theme.sections.large};
   }
@@ -90,12 +90,12 @@ const IntroSection = (props) => {
           <RichText render={subtitle} />
         </Headline>
         <Buttons>
-          <Button primary link={primary_btn.link}>
+          {primary_btn.label !== null && <Button primary link={primary_btn.link}>
             {primary_btn.label}
-          </Button>
-          <Button secondary link={secondary_btn.link}>
+          </Button>}
+          {secondary_btn.label !== null && <Button secondary link={secondary_btn.link}>
             {secondary_btn.label}
-          </Button>
+          </Button>}
         </Buttons>
         <Logos>
           {logos.map((logo, index) => (
