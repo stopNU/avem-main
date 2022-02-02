@@ -21,25 +21,32 @@ const Symbol = styled.div`
     will-change: transform;
     transform-style: preserve-3d;
     z-index: 6;
-    width: 100%;
+    //width: 100%;
     max-width: 1800px;
     margin: 0 auto;
     display: flex;
-    left: 0;
-    right: 0;
-    justify-content: end;
+    //left: 0;
+    right: 30px;
+    //margin-right: 0;
+    //justify-content: end;
   }
 `;
 
-const Symbol1 = styled(Symbol)``;
+const Symbol1 = styled(Symbol)`
+  margin-top: 200px;
+  right: 30px;
+`;
 
 const Symbol2 = styled(Symbol)`
-  justify-content: start;
+  //justify-content: start;
   margin-top: -400px;
+  left: 30px;
+  right: auto;
 `;
 
 const Symbol3 = styled(Symbol)`
   margin-top: -900px;
+  right: 30px;
 `;
 
 const setTranslate = (xPos, yPos, el) => {
@@ -57,7 +64,7 @@ export default function Home(props) {
     const storeRequestAnimationFrame = () => requestAnimationFrame;
     const onScroll = (e) => {
       storeRequestAnimationFrame(
-        setTranslate(12, window.pageYOffset / 3, symbol1)
+        setTranslate(12, window.pageYOffset / 4, symbol1)
       );
       storeRequestAnimationFrame(
         setTranslate(12, window.pageYOffset / 5, symbol2)
