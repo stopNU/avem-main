@@ -56,28 +56,46 @@ const Logos = styled.div`
   display: flex;
   column-gap: 25px;
   row-gap: 10px;
+  width: 100%;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  @media ${device.small} {
-    flex-direction: row;
-    padding-top: 35px;
-  }
+  align-items: center;
   @media ${device.mobile} {
     flex-direction: row;
     padding-top: 35px;
   }
   .logo-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    @media ${device.mobile} {
+      width: auto;
+    }
     padding: 16px 24px;
     background: rgba(0, 0, 0, 0.1);
     box-shadow: inset 0px 0.5px 4px rgba(87, 33, 143, 0.25);
     border-radius: 8px;
   }
+  .line {
+    background-color: #000;
+    width: 1px;
+    height: 100%;
+    opacity: 0.2;
+  }
 `;
 
-const IntroSection = (props) => {
-  const { title, subtitle, primary_btn, secondary_btn, logos } = props;
+const Line = styled.div`
+  background-color: #000;
+  width: 2px;
+  height: 48px;
+  opacity: 0.2;
+  margin: 0 24px;
+`;
 
+const IntroSection = ({ title, subtitle, primary_btn, secondary_btn, logos }) => {
   return (
     <Section>
       <BackgroundImage
@@ -90,21 +108,32 @@ const IntroSection = (props) => {
           <RichText render={subtitle} />
         </Headline>
         <Buttons>
-          {primary_btn.label !== null && <Button primary link={primary_btn.link}>
-            {primary_btn.label}
-          </Button>}
-          {secondary_btn.label !== null && <Button secondary link={secondary_btn.link}>
-            {secondary_btn.label}
-          </Button>}
+          {primary_btn.label !== null && (
+            <Button primary link={primary_btn.link}>
+              {primary_btn.label}
+            </Button>
+          )}
+          {secondary_btn.label !== null && (
+            <Button secondary link={secondary_btn.link}>
+              {secondary_btn.label}
+            </Button>
+          )}
         </Buttons>
         <Logos>
-          {logos.map((logo, index) => (
+          {logos.map((logos_group, index) => (
             <div className="logo-group" key={index}>
               <Image
-                src={logo.logo.url}
-                alt={logo.alt}
-                width={logo.logo.dimensions.width}
-                height={logo.logo.dimensions.height}
+                src={logos_group.logo_1.url}
+                alt={logos_group.logo_1.alt}
+                width={logos_group.logo_1.dimensions.width}
+                height={logos_group.logo_1.dimensions.height}
+              />
+              <Line />
+              <Image
+                src={logos_group.logo.url}
+                alt={logos_group.alt}
+                width={logos_group.logo.dimensions.width}
+                height={logos_group.logo.dimensions.height}
               />
             </div>
           ))}
