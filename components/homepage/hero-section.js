@@ -71,7 +71,7 @@ const HeroSection = (props) => {
           <Image
             src={image.url}
             alt={image.alt}
-            quality={90}
+            quality={100}
             width={image.dimensions.width}
             height={image.dimensions.height}
           />
